@@ -43,10 +43,10 @@ def plot_images_list(images):
   px = get_figure_pixels()
   width, height = images[0].shape
   nrows, ncols = 1, len(images)
-  total_width = width*px*ncols
-  total_height = height*px*nrows
+  total_width = width*ncols
+  total_height = height*nrows
   if total_width < 2**16 and total_height < 2**16:
-    fig, ax = plt.subplots(ncols=ncols, nrows=nrows, figsize=(total_width, total_height))
+    fig, ax = plt.subplots(ncols=ncols, nrows=nrows, figsize=(total_width*px, total_height*px))
     for i, axi in enumerate(ax.flat):
       axi.imshow(images[i], cmap="gray")
   else:
